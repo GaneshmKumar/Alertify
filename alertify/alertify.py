@@ -18,8 +18,14 @@ class Notify(object):
         self.title = 'Alert From Alertify'
 
     def counter(self, notify_time):
+        s = 00
+        m = notify_time
+        os.system('clear')
+        print "Alertify"
+        print "Alerts in %d minutes %d seconds ..." % (m, s)
+        time.sleep(1)
         s = 59
-        m = notify_time - 1
+        m -= 1
         while s >= 00:
             if m == -1:
                 print "Completed"
