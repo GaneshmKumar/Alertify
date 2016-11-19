@@ -23,10 +23,14 @@ message - the message to display
 ``alertify time message --no-counter``
 
 ### Example ###
-Alert after 1 minute (Timer runs on the terminal)
 ``alertify 1 Time is up``
 
-Alert after 2 minutes (Timer does not run on the terminal)
+Alert after 1 minute (Timer runs on the terminal)
+
 ``alertify 2 Time is up --no-counter``
+
+Alert after 2 minutes (Timer does not run on the terminal)
+
+
 
 **NOTE:** Works on Linux only.
