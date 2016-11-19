@@ -50,34 +50,37 @@ class Notify(object):
         except Exception, e:
             print e
 
+def main():
+    try:
+        counter_flag = True
+        notify = Notify()
+        notify_time = sys.argv[1]
+
+        if not notify_time.isdigit():
+            try:
+                raise exception.InvalidArgument("Time parameter must be a positive integer value")
+            except exception.InvalidArgument, e:
+                print e.args
+                print "Exiting ...."
+                sys.exit()
+        notify_time = int(sys.argv[1])
+
+        if sys.argv[len(sys.argv) - 1] == '--no-counter':
+            message = ' '.join([sys.argv[i] for i in range(2, len(sys.argv) - 1)])
+            counter_flag = False
+        else:
+            message = ' '.join([sys.argv[i] for i in range(2, len(sys.argv))])
+        start_time = datetime.datetime.now()
+
+        if counter_flag:
+            notify.counter(notify_time)
+        else:
+                notify.sleep_time(notify_time)
+
+        notify.sendNotification(message, start_time)
+    except KeyboardInterrupt:
+        print "\nQuitting ..."
+        print "Bye"
+
 if __name__ == "__main__":
-        try:
-            counter_flag = True
-            notify = Notify()
-            notify_time = sys.argv[1]
-
-            if not notify_time.isdigit():
-                try:
-                    raise exception.InvalidArgument("Time parameter must be a positive integer value")
-                except exception.InvalidArgument, e:
-                    print e.args
-                    print "Exiting ...."
-                    sys.exit()
-            notify_time = int(sys.argv[1])
-
-            if sys.argv[len(sys.argv) - 1] == '--no-counter':
-                message = ' '.join([sys.argv[i] for i in range(2, len(sys.argv) - 1)])
-                counter_flag = False
-            else:
-                message = ' '.join([sys.argv[i] for i in range(2, len(sys.argv))])
-            start_time = datetime.datetime.now()
-
-            if counter_flag:
-                notify.counter(notify_time)
-            else:
-                    notify.sleep_time(notify_time)
-                    
-            notify.sendNotification(message, start_time)
-        except KeyboardInterrupt:
-            print "\nQuitting ..."
-            print "Bye"
+    main()
