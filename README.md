@@ -27,11 +27,11 @@ message - the message to display
 ### Example ###
 ``alertify 1 Time is up``
 
-Alert after 1 minute (Timer runs on the terminal)
+Alerts after 1 minute (Timer runs on the terminal)
 
 ``alertify 2 Time is up --no-counter``
 
-Alert after 2 minutes (Timer does not run on the terminal)
+Alerts after 2 minutes (Timer does not run on the terminal)
 
 
 
