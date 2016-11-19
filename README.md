@@ -16,6 +16,7 @@ A Notification Alert for Linux System
 ## Usage ##
 ### Alert with Timer ###
 ``alertify time message``
+
 time - denotes the minutes which can be any integer value
 message - the message to display
 
