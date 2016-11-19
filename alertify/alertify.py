@@ -15,7 +15,7 @@ import exception
 
 class Notify(object):
     def __init__(self):
-        self.title = 'Notification From Notify'
+        self.title = 'Alert From Alertify'
 
     def counter(self, notify_time):
         s = 59
@@ -26,8 +26,8 @@ class Notify(object):
                 print "Bye"
                 return
             os.system('clear')
-            print "Notify"
-            print "Notification in %d minutes %d seconds ..." % (m, s)
+            print "Alertify"
+            print "Alerts in %d minutes %d seconds ..." % (m, s)
             time.sleep(1)
             s -= 1
             if s == 0:
@@ -46,7 +46,7 @@ class Notify(object):
             diff_time_in_delta = end_time - start_time
             diff_time_in_mins = divmod(diff_time_in_delta.days * 86400 + diff_time_in_delta.seconds, 60)
             diff_time_msg = ' (Set ' + str(diff_time_in_mins[0]) + ' minutes ' + str(diff_time_in_mins[1]) + ' seconds ago)'
-            os.system('notify-send "'+self.title+diff_time_msg+'" "'+message+'"')
+            os.system('notify-send "'+self.title+'" "'+message+'\r'+diff_time_msg+'"')
         except Exception, e:
             print e
 
@@ -54,7 +54,7 @@ def main():
     try:
         counter_flag = True
         notify = Notify()
-        
+
         if len(sys.argv) <= 2:
             try:
                 raise exception.PassArgument("Please pass Time and Message as arguments")
