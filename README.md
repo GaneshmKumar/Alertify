@@ -17,11 +17,12 @@ A Notification Alert for Linux System
 ### Alert with Timer ###
 ``alertify time message``
 
-time - denotes the minutes which can be any integer value
-message - the message to display
-
 ### Alert without Timer
 ``alertify time message --no-counter``
+
+time - denotes the minutes which can be any integer value
+
+message - the message to display
 
 ### Example ###
 ``alertify 1 Time is up``
