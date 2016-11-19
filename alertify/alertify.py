@@ -54,6 +54,15 @@ def main():
     try:
         counter_flag = True
         notify = Notify()
+        
+        if len(sys.argv) <= 2:
+            try:
+                raise exception.PassArgument("Please pass Time and Message as arguments")
+            except exception.PassArgument, e:
+                print e.args
+                print "Exiting ...."
+                sys.exit()
+
         notify_time = sys.argv[1]
 
         if not notify_time.isdigit():
