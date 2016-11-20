@@ -34,7 +34,7 @@ Alerts after 1 minute (Timer runs on the terminal)
 Alerts after 2 minutes (Timer does not run on the terminal)
 
 
-## UNINSTALL ##
+## Uninstall ##
 To uninstall Alertify, execute the following line in your terminal
 
 ``sudo rm -rf /usr/local/bin/alertify``
