@@ -40,4 +40,4 @@ To uninstall Alertify, execute the following line in your terminal
 ``sudo rm -rf /usr/local/bin/alertify``
 
 
-**NOTE:** Works on Linux only.
+**NOTE:** Works on Linux and Windows.

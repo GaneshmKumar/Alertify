@@ -9,6 +9,7 @@ import sys
 import time
 import subprocess
 import datetime
+import platform
 
 #Used defined module
 import exception
@@ -16,11 +17,15 @@ import exception
 class Notify(object):
     def __init__(self):
         self.title = 'Alert From Alertify'
+        self.platform = platform.system()
 
     def counter(self, notify_time):
         s = 00
         m = notify_time
-        os.system('clear')
+        if self.platform == 'Linux':
+            os.system('clear')
+        elif self.platform == 'Windows':
+            os.system('cls');
         print "Alertify"
         print "Alerts in %d minutes %d seconds ..." % (m, s)
         time.sleep(1)
@@ -31,7 +36,10 @@ class Notify(object):
                 print "Completed"
                 print "Bye"
                 return
-            os.system('clear')
+            if self.platform == 'Linux':
+                os.system('clear')
+            elif self.platform == 'Windows':
+                os.system('cls');
             print "Alertify"
             print "Alerts in %d minutes %d seconds ..." % (m, s)
             time.sleep(1)
