@@ -10,6 +10,7 @@ import time
 import subprocess
 import datetime
 import platform
+from win10toast import ToastNotifier
 
 #Used defined module
 import exception
@@ -18,8 +19,9 @@ class Notify(object):
     def __init__(self):
         self.title = 'Alert From Alertify'
         self.platform = platform.system()
+        self.toaster = ToastNotifier()
 
-    def counter(self, notify_time):
+    def counter(self, notify_time, message):
         s = 00
         m = notify_time
         if self.platform == 'Linux':
@@ -41,6 +43,9 @@ class Notify(object):
             elif self.platform == 'Windows':
                 os.system('cls');
             print "Alertify"
+            print "-------"
+            print message
+            print "-" * len(message)
             print "Alerts in %d minutes %d seconds ..." % (m, s)
             time.sleep(1)
             s -= 1
@@ -60,7 +65,10 @@ class Notify(object):
             diff_time_in_delta = end_time - start_time
             diff_time_in_mins = divmod(diff_time_in_delta.days * 86400 + diff_time_in_delta.seconds, 60)
             diff_time_msg = ' (Set ' + str(diff_time_in_mins[0]) + ' minutes ' + str(diff_time_in_mins[1]) + ' seconds ago)'
-            os.system('notify-send "'+self.title+'" "'+message+'\r'+diff_time_msg+'"')
+            if self.platform == 'Linux':
+                os.system('notify-send "'+self.title+'" "'+message+'\r'+diff_time_msg+'"')
+            elif self.platform == 'Windows':
+                self.toaster.show_toast(self.title, message+'\n'+str(diff_time_msg), duration=300)
         except Exception, e:
             print e
 
@@ -96,7 +104,7 @@ def main():
         start_time = datetime.datetime.now()
 
         if counter_flag:
-            notify.counter(notify_time)
+            notify.counter(notify_time, message)
         else:
                 notify.sleep_time(notify_time)
 
